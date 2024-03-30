@@ -21,7 +21,7 @@
                 <td>{$user->email}</td>
                 <td>
                     <a href='./update/edit.php?id={$user->id}' class='btn btn-outline-primary'>Editar</a>
-                    <a href='#' class='btn btn-danger' onclick='confirmDelete({$row->user_id})'>Excluir</a>
+                    <a href='./delete/confirmation.php?id={$user->id}' class='btn btn-danger'>Delete</a>
                 </td>
             </tr>";
     }

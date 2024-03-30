@@ -11,7 +11,9 @@ if ($request_uri === '/') {
     $id = $matches[1];
     $_GET['id'] = $id; // Set the ID parameter in $_GET array
     include('edit.php');
-} elseif (preg_match('/^\/delete\/(\d+)$/', $request_uri, $matches) && $request_method === 'POST') {
+} elseif (preg_match('/^\/delete\/(\d+)$/', $request_uri, $matches) && $request_method === 'DELETE') {
+    $id = $matches[1];
+    $_GET['id'] = $id; // Set the ID parameter in $_GET array
     include('delete.php');
 } else {
     // Handle 404 error
