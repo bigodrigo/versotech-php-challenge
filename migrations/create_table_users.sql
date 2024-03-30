@@ -1,5 +1,6 @@
-create table users(
+CREATE TABLE users (
     id INTEGER PRIMARY KEY,
-    name varchar(100) NOT NULL,
-    email varchar(100) NOT NULL
-)
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    color_ids TEXT, -- Storing color IDs as a comma-separated string
+);

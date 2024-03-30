@@ -1,4 +1,5 @@
-create table colors(
+CREATE TABLE colors (
     id INTEGER PRIMARY KEY,
-    name varchar(50) NOT NULL
-)
+    name VARCHAR(50) NOT NULL,
+    hex_code VARCHAR(7) NOT NULL -- Store hex color code (e.g., #RRGGBB)
+);

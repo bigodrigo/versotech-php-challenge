@@ -15,6 +15,7 @@
                 <a href='./create/create.php' class='btn btn-outline-success col-4'>Adicionar Novo</a>
             </div>
         </div>
+        
         <?php
             // Include the Connection class to establish a connection to the SQLite database
             require './connection.php';
@@ -26,16 +27,16 @@
         <div class="container mt-4">
             <h2 class="text-center">Users Table</h2>
             <?php
-            // Include the user table file to display the user data
-            require './read/user_table.php';
+                // Include the user table file to display the user data
+                require './read/user_table.php';
             ?>
         </div>
 
         <div class="container mt-4">
             <h2 class="text-center">Colors Table</h2>
             <?php
-            // Include the colors table file to display the color data
-            require './read/colors_table.php';
+                // Include the colors table file to display the color data
+                require './read/colors_table.php';
             ?>
         </div>
     </div>
