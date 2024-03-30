@@ -1,1 +1,17 @@
-INSERT INTO colors(name) VALUES ('Blue'), ('Red'), ('Yellow'), ('Green')
+INSERT INTO colors (name, css_name) VALUES 
+('Black', 'black'),
+('Silver', 'silver'),
+('Gray', 'gray'),
+('White', 'white'),
+('Maroon', 'maroon'),
+('Red', 'red'),
+('Purple', 'purple'),
+('Fuchsia', 'fuchsia'),
+('Green', 'green'),
+('Lime', 'lime'),
+('Olive', 'olive'),
+('Yellow', 'yellow'),
+('Navy', 'navy'),
+('Blue', 'blue'),
+('Teal', 'teal'),
+('Aqua', 'aqua');

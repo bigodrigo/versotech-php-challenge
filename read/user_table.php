@@ -1,33 +1,27 @@
 <?php
-    // Use the $connection object passed from index.php
-    global $connection;
+    require_once __DIR__ . '/../config.php';
+    require_once ROOT_PATH . '/connection.php'; 
 
-    // Fetch users and their associated colors from the database
-    $usersWithColors = $connection->query("
-        SELECT u.id AS user_id, u.name AS user_name, u.email AS user_email, c.id AS color_id, c.name AS color_name
-        FROM users u
-        LEFT JOIN user_colors uc ON u.id = uc.user_id
-        LEFT JOIN colors c ON uc.color_id = c.id
-    ");
+    $users = $connection->query("SELECT * FROM users");
 
     echo "<table class='table table-striped'>
-            <tr>
-                <th>ID</th>    
-                <th>Nome</th>    
-                <th>Email</th>
-                <th>Cor Favorita</th>
-                <th>Ação</th>    
-            </tr>";
 
-    foreach ($usersWithColors as $row) {
+        <tr>
+            <th scope='col'>ID</th>    
+            <th scope='col'>Nome</th>    
+            <th scope='col'>Email</th>
+            <th scope='col'>Ação</th>    
+        </tr>
+    ";
+
+    foreach ($users as $user) {
         echo "<tr>
-                <td>{$row->user_id}</td>
-                <td>{$row->user_name}</td>
-                <td>{$row->user_email}</td>
-                <td>{$row->color_name}</td>
+                <td>{$user->id}</td>
+                <td>{$user->name}</td>
+                <td>{$user->email}</td>
                 <td>
-                    <a href='#' class='btn btn-outline-primary'>Editar</a>
-                    <a href='#' class='btn btn-danger'>Excluir</a>
+                    <a href='./update/edit.php?id={$user->id}' class='btn btn-outline-primary'>Editar</a>
+                    <a href='#' class='btn btn-danger' onclick='confirmDelete({$row->user_id})'>Excluir</a>
                 </td>
             </tr>";
     }
