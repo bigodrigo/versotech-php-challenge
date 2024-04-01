@@ -54,3 +54,11 @@ Use seu conhecimento, consulte a documentação e o google, caso ainda houver d�
         </div>
     </div>
 ```
+
+Multiple colors;
+Verificar evitar repetir a mesma cor no usuario;
+Verificar se existe um usuário;
+Mudar as HTTP para delete patch?
+Review geral;
+Modal;
+Variáveis;
