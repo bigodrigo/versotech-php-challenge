@@ -1,13 +1,36 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include connection.php to establish a connection to the SQLite database
     require_once __DIR__ . '/../config.php';
-    require_once ROOT_PATH . '/connection.php';
+    require_once ROOT_PATH . '/connection.php'; 
 
-    // Fetch list of users
-    $users = $connection->query("SELECT id, name FROM users");
+    // Get the data submitted via POST
+    $user_id = $_POST['user_id'];
+    $color_id = $_POST['color_id'];
 
-    // Fetch list of colors
-    $colors = $connection->query("SELECT id, name FROM colors");
+    // Validation (you can add more sophisticated validation as needed)
+    if (empty($user_id) || empty($color_id)) {
+        // Handle validation error (e.g., display an error message)
+        echo "User and color are required.";
+    } else {
+        // Data is valid, proceed to insert into the database
+        $connection = new Connection();
+        $query = "INSERT INTO user_colors (user_id, color_id) VALUES (:user_id, :color_id)";
+        $statement = $connection->getConnection()->prepare($query);
+        $statement->bindParam(':user_id', $user_id);
+        $statement->bindParam(':color_id', $color_id);
+
+        if ($statement->execute()) {
+            // Data inserted successfully
+            // Redirect back to the index page
+            header("Location: " . BASE_URL . "/index.php");
+            exit();
+        } else {
+            // Handle database insertion error
+            echo "Failed to insert data into the database.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,50 +44,18 @@
 <body>
     <div class="container">
         <h1>Add New Color</h1>
-        <form action="process_new_color.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="mb-3">
-                <label for="user_id" class="form-label">Select User</label>
-                <select class="form-select" id="user_id" name="user_id">
-                    <?php foreach ($users as $user): ?>
-                        <option value="<?= $user->id ?>"><?= $user->name ?></option>
-                    <?php endforeach; ?>
-                </select>
+                <label for="user_id" class="form-label">User ID</label>
+                <input type="text" class="form-control" id="user_id" name="user_id">
             </div>
-            <div id="colorInputs">
-                <div class="mb-3 color-input">
-                    <label for="color1" class="form-label">Color 1</label>
-                    <select class="form-select" name="colors[]">
-                        <?php foreach ($colors as $color): ?>
-                            <option value="<?= $color->id ?>"><?= $color->name ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="color_id" class="form-label">Color ID</label>
+                <input type="text" class="form-control" id="color_id" name="color_id">
             </div>
-            <button type="button" class="btn btn-secondary" id="addColor">Add Color</button>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById("addColor").addEventListener("click", function() {
-            // Get the current number of color inputs
-            var colorInputCount = document.querySelectorAll(".color-input").length;
-
-            // Create a new color input element
-            var newColorInput = document.createElement("div");
-            newColorInput.className = "mb-3 color-input";
-            newColorInput.innerHTML = `
-                <label for="color${colorInputCount + 1}" class="form-label">Color ${colorInputCount + 1}</label>
-                <select class="form-select" name="colors[]">
-                    <?php foreach ($colors as $color): ?>
-                        <option value="<?= $color->id ?>"><?= $color->name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            `;
-
-            // Append the new color input element to the colorInputs div
-            document.getElementById("colorInputs").appendChild(newColorInput);
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
