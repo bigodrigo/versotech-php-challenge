@@ -2,7 +2,6 @@
     // Use the $connection object passed from index.php
     global $connection;
 
-    // Fetch colors from the database
     $colors = $connection->query("SELECT * FROM colors");
 
     echo "<table class='table table-striped'>

@@ -5,16 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../config.php';
     require_once ROOT_PATH . '/connection.php'; 
 
-    // Get the data submitted via POST
+    // Push the data submitted via POST
     $name = $_POST['name'];
     $email = $_POST['email'];
 
-    // Validation (you can add more sophisticated validation as needed)
+    // Validation
     if (empty($name) || empty($email)) {
-        // Handle validation error (e.g., display an error message)
         echo "Name and email are required.";
     } else {
-        // Data is valid, proceed to insert into the database
         $connection = new Connection();
         $query = "INSERT INTO users (name, email) VALUES (:name, :email)";
         $statement = $connection->getConnection()->prepare($query);
@@ -22,12 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bindParam(':email', $email);
 
         if ($statement->execute()) {
-            // Data inserted successfully
             // Redirect back to the index page
             header("Location: " . BASE_URL . "/index.php");
             exit();
         } else {
-            // Handle database insertion error
             echo "Failed to insert data into the database.";
         }
     }

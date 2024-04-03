@@ -20,12 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $statement->bindParam(':email', $email);
 
             if ($statement->execute()) {
-                // Data updated successfully
                 $connection->disconnect();
                 header("Location: " . BASE_URL . "/index.php");
                 exit();
             } else {
-                // Handle database update error
                 echo "Failed to update user data.";
             }
         }

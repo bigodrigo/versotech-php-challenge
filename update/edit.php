@@ -10,12 +10,11 @@ try {
     $query = "SELECT * FROM users WHERE id = $id";
     $userData = $connection->query($query);
 
-    $user = $userData->fetch(); // Fetch the user data directly
+    $user = $userData->fetch();
 
-    // Check if user data exists
     if (!$user) {
         echo "<p>User not found.</p>";
-        exit(); // Exit script if user not found
+        exit();
     }
 
     $connection->disconnect();

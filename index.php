@@ -50,7 +50,6 @@
         <div class="container mt-4">
             <h2 class="text-center">Users Table</h2>
             <?php
-                // Include the user table file to display the user data
                 require_once ROOT_PATH . '/read/user_table.php';
             ?>
         </div>
@@ -58,7 +57,6 @@
         <div class="container mt-4">
             <h2 class="text-center">Users Colors Table</h2>
             <?php
-                // Include the user table file to display the user data
                 require_once ROOT_PATH . '/read/user_colors_table.php';
             ?>
         </div>

@@ -15,11 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bindParam(':color_id', $color_id);
 
         if ($statement->execute()) {
-            // Deletion successful, redirect to index or any other page
             header("Location: " . BASE_URL . "/index.php");
             exit();
         } else {
-            // Handle deletion failure
             echo "Failed to delete user color relationship.";
         }
     } catch (PDOException $e) {
@@ -28,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $e->getMessage();
     }
 } else {
-    // Handle invalid request
     echo "Invalid request.";
 }
 ?>

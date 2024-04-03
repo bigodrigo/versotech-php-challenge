@@ -21,7 +21,7 @@
                 <td>{$user->email}</td>
                 <td>
                     <a href='./update/edit.php?id={$user->id}' class='btn btn-outline-primary'>Edit</a>
-                    <a href='./delete/confirmation.php?id={$user->id}' class='btn btn-danger'>Delete</a>
+                    <a href='./delete/user_confirmation.php?id={$user->id}' class='btn btn-danger'>Delete</a>
                 </td>
             </tr>";
     }

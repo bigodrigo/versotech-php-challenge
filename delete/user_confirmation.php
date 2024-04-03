@@ -40,7 +40,7 @@ try {
         <p>Are you sure you want to delete the following user?</p>
         <p><strong>Name:</strong> <?php echo $user->name; ?></p>
         <p><strong>Email:</strong> <?php echo $user->email; ?></p>
-        <form action="delete.php" method="post">
+        <form action="user_delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <button type="submit" class="btn btn-danger">Delete</button>
             <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-secondary">Cancel</a>

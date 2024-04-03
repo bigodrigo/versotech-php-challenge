@@ -4,16 +4,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once __DIR__ . '/../config.php';
     require_once ROOT_PATH . '/connection.php'; 
 
-    // Get the data submitted via POST
+    // Push the data submitted via POST
     $user_id = $_POST['user_id'];
     $color_id = $_POST['color_id'];
 
-    // Validation (you can add more sophisticated validation as needed)
+    // Validation
     if (empty($user_id) || empty($color_id)) {
-        // Handle validation error (e.g., display an error message)
         echo "User and color are required.";
     } else {
-        // Data is valid, proceed to insert into the database
         $connection = new Connection();
         $query = "INSERT INTO user_colors (user_id, color_id) VALUES (:user_id, :color_id)";
         $statement = $connection->getConnection()->prepare($query);
@@ -21,12 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->bindParam(':color_id', $color_id);
 
         if ($statement->execute()) {
-            // Data inserted successfully
             // Redirect back to the index page
             header("Location: " . BASE_URL . "/index.php");
             exit();
         } else {
-            // Handle database insertion error
             echo "Failed to insert data into the database.";
         }
     }

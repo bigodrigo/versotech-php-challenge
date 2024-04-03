@@ -1,4 +1,5 @@
 <?php
+// Get the data for the inputs
 $user_id = $_GET['user_id'];
 $color_id = $_GET['color_id'];
 
