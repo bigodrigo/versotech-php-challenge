@@ -3,7 +3,7 @@
     global $connection;
 
     // Fetch user colors with their corresponding color names and user names, ordered by user_id and color_id
-    $query = "SELECT u.name as user_name, uc.color_id, c.css_name 
+    $query = "SELECT uc.user_id, u.name as user_name, uc.color_id, c.css_name 
               FROM user_colors uc 
               JOIN users u ON uc.user_id = u.id
               JOIN colors c ON uc.color_id = c.id 
@@ -12,13 +12,15 @@
 
     echo "<table class='table table-striped'>
             <tr>
-                <th>User</th>    
+                <th>User ID</th>
+                <th>User Name</th>    
                 <th>Color</th>   
                 <th>Action</th>   
             </tr>";
 
     foreach ($user_colors as $user_color) {
         echo "<tr>
+                <td>{$user_color->user_id}</td>
                 <td>{$user_color->user_name}</td>
                 <td><div style='background-color: {$user_color->css_name}; width: 50px; height: 20px;'></div></td>
                 <td>

@@ -4,7 +4,7 @@
 
     $users = $connection->query("SELECT * FROM users");
 
-    echo "<table class='table table-striped'>
+    echo "<table class='table table-striped text-center'>
 
         <tr>
             <th scope='col'>ID</th>    

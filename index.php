@@ -19,18 +19,14 @@
         ?>
 
         <div class="container text-center">
-            <div class="row">
-                <h4 class='mx-5'>This application allows for user creation and color selection. You can view the color table and add information using the buttons below:</h4>
+            <div>
+                <h4 class='text-center mx-5'>This application allows for user creation and color selection. You can view the color table and add information using the buttons below:</h4>
                 <a href='<?php echo BASE_URL ?>/create/add_new_user.php' class='btn btn-outline-success col mx-5'>Add New User</a>
                 <button type="button" class="btn btn-outline-primary col mx-5" data-bs-toggle="modal" data-bs-target="#colorsModal">
                 Show Colors Table
             </button>
                 <a href='<?php echo BASE_URL ?>/create/add_new_color.php' class='btn btn-outline-success col mx-5'>Add a Color to a User</a>
             </div>
-        </div>
-
-        <div class="container mt-4">
-
         </div>
 
         <!-- Modal -->
