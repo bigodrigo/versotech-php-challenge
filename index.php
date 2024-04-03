@@ -20,19 +20,35 @@
 
         <div class="container text-center">
             <div class="row">
-                <p>Podemos visualizar abaixo alguns dos dados, você pode adicionar nova informações clicando no botão:</p>
-                <a href='<?php echo BASE_URL ?>/create/add_new_user.php' class='btn btn-outline-success col'>Adicionar Novo Usuário</a>
-                <div class="col"></div>
-                <a href='<?php echo BASE_URL ?>/create/add_new_color.php' class='btn btn-outline-success col'>Adicionar Nova Cor</a>
+                <h4 class='mx-5'>This application allows for user creation and color selection. You can view the color table and add information using the buttons below:</h4>
+                <a href='<?php echo BASE_URL ?>/create/add_new_user.php' class='btn btn-outline-success col mx-5'>Add New User</a>
+                <button type="button" class="btn btn-outline-primary col mx-5" data-bs-toggle="modal" data-bs-target="#colorsModal">
+                Show Colors Table
+            </button>
+                <a href='<?php echo BASE_URL ?>/create/add_new_color.php' class='btn btn-outline-success col mx-5'>Add a Color to a User</a>
             </div>
         </div>
 
         <div class="container mt-4">
-            <h2 class="text-center">Colors Table</h2>
-            <?php
-                // Include the colors table file to display the color data
-                require_once ROOT_PATH . '/read/colors_table.php';
-            ?>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="colorsModal" tabindex="-1" aria-labelledby="colorsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="colorsModalLabel">Colors Table</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php require_once ROOT_PATH . '/read/colors_table.php'; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="container mt-4">

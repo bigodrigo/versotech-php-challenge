@@ -8,9 +8,9 @@
 
         <tr>
             <th scope='col'>ID</th>    
-            <th scope='col'>Nome</th>    
+            <th scope='col'>Name</th>    
             <th scope='col'>Email</th>
-            <th scope='col'>Ação</th>    
+            <th scope='col'>Action</th>    
         </tr>
     ";
 
@@ -20,7 +20,7 @@
                 <td>{$user->name}</td>
                 <td>{$user->email}</td>
                 <td>
-                    <a href='./update/edit.php?id={$user->id}' class='btn btn-outline-primary'>Editar</a>
+                    <a href='./update/edit.php?id={$user->id}' class='btn btn-outline-primary'>Edit</a>
                     <a href='./delete/confirmation.php?id={$user->id}' class='btn btn-danger'>Delete</a>
                 </td>
             </tr>";
