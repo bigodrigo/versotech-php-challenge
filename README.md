@@ -63,7 +63,7 @@ table: user_colors
 
 - Solution URL: [GitHub Repo](https://github.com/bigodrigo/versotech-php-challenge)
 - Original Repo: [Versotech PHP Challenge](https://github.com/dlimars/prova-php-entrevista)
-- Second Challenge: [Versotech SQL Challenge](https://bigodrigo.github.com/versotech-sql-challenge)
+- Second Challenge: [Versotech SQL Challenge](https://github.com/bigodrigo/versotech-sql-challenge)
 
 
 ## My process
